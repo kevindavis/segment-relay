@@ -15,12 +15,18 @@ GEM
       debugger-linecache (~> 1.2)
       slop (~> 3.6)
     columnize (0.9.0)
+    daemons (1.1.9)
     debugger-linecache (1.2.0)
+    eventmachine (1.0.5)
     pg (0.18.1)
     rack (1.6.0)
     rack-protection (1.5.3)
       rack
     slop (3.6.0)
+    thin (1.6.3)
+      daemons (~> 1.0, >= 1.0.9)
+      eventmachine (~> 1.0)
+      rack (~> 1.0)
     tilt (2.0.1)
 
 PLATFORMS
@@ -30,3 +36,4 @@ DEPENDENCIES
   byebug
   pg
   sinatra!
+  thin
