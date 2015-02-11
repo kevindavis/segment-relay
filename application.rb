@@ -1,6 +1,7 @@
 require "rubygems"
 require "bundler"
 require "pg"
+require "rack/contrib"
 Bundler.require :default, (ENV["RACK_ENV"] || "development").to_sym
 
 class Application < Sinatra::Base
@@ -20,7 +21,7 @@ class Application < Sinatra::Base
   end
 
   post "/segment" do
-    logger.info request.body
+    logger.info params
     begin
       @db.exec("INSERT INTO events (          \
                               event_name,     \
