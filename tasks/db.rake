@@ -38,4 +38,14 @@ namespace :db do
     end
   end
 
+  desc "empty the events table"
+  task :empty do |t, args|
+    begin
+      db.exec 'DELETE FROM events'
+    rescue
+      puts 'There was a problem emptying the events table'
+    else
+      puts 'Emptied the events table'
+    end
+  end
 end
