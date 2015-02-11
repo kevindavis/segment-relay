@@ -12,7 +12,7 @@ namespace :db do
   task :create do |t, args|
 
     json_type = 'jsonb'
-    json_type = 'json' if db.parameter_status('server_version').to_f < "9.4.0"
+    json_type = 'json' if db.parameter_status('server_version').to_f < "9.4.0".to_f
     events_schema = 'user_id text,'\
                     'event_name text,'\
                     "details #{json_type},"\
