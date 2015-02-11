@@ -1,6 +1,7 @@
 require "rubygems"
 require "bundler"
 require "pg"
+require "rack"
 require "rack/contrib"
 Bundler.require :default, (ENV["RACK_ENV"] || "development").to_sym
 
