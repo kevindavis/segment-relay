@@ -37,6 +37,8 @@ class Application < Sinatra::Base
                 )")
     rescue PG::Error => err
       logger.error "Problem inserting an event (#{params[:event]}) at #{params[:timestamp]}"
+      logger.error err.message
+      logger.error err.inspect
     end
   end
 
