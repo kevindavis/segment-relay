@@ -3,6 +3,7 @@ require "bundler"
 require "pg"
 require "rack"
 require "rack/contrib"
+require "json"
 Bundler.require :default, (ENV["RACK_ENV"] || "development").to_sym
 
 class Application < Sinatra::Base
@@ -24,16 +25,16 @@ class Application < Sinatra::Base
   post "/segment" do
     logger.info params
     begin
-      @db.exec("INSERT INTO events (          \
-                              event_name,     \
-                              occurred_at,    \
-                              user_id,        \
-                              details         \
-                ) VALUES (                    \
-                    '#{params[:event]}',      \
-                    '#{params[:timestamp]}',  \
-                    '#{params[:userId]}',     \
-                    '#{params[:properties]}'  \
+      @db.exec("INSERT INTO events (                  \
+                              event_name,             \
+                              occurred_at,            \
+                              user_id,                \
+                              details                 \
+                ) VALUES (                            \
+                    '#{params[:event]}',              \
+                    '#{params[:timestamp]}',          \
+                    '#{params[:userId]}',             \
+                    '#{params[:properties].to_json}'  \
                 )")
     rescue PG::Error => err
       logger.error "Problem inserting an event (#{params[:event]}) at #{params[:timestamp]}"
