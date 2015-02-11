@@ -23,7 +23,6 @@ class Application < Sinatra::Base
   end
 
   post "/segment" do
-    logger.info params
     begin
       @db.exec("INSERT INTO events (                  \
                               event_name,             \
