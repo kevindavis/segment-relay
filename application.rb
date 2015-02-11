@@ -30,10 +30,10 @@ class Application < Sinatra::Base
                               user_id,        \
                               details         \
                 ) VALUES (                    \
-                    #{params[:event]},       \
-                    #{params[:timestamp]},   \
-                    #{params[:userId]},      \
-                    #{params[:properties]}   \
+                    '#{params[:event]}',      \
+                    '#{params[:timestamp]}',  \
+                    '#{params[:userId]}',     \
+                    '#{params[:properties]}'  \
                 )")
     rescue PG::Error => err
       logger.error "Problem inserting an event (#{params[:event]}) at #{params[:timestamp]}"
