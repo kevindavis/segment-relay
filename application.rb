@@ -19,7 +19,7 @@ class Application < Sinatra::Base
     @db = PG.connect(connection_hash)
   end
 
-  get "/segment" do
+  post "/segment" do
     logger.info "received a request to /segment"
     begin
       @db.exec("INSERT INTO events (          \
