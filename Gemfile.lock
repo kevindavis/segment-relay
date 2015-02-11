@@ -20,8 +20,11 @@ GEM
     eventmachine (1.0.5)
     pg (0.18.1)
     rack (1.6.0)
+    rack-contrib (1.2.0)
+      rack (>= 0.9.1)
     rack-protection (1.5.3)
       rack
+    rake (10.4.2)
     slop (3.6.0)
     thin (1.6.3)
       daemons (~> 1.0, >= 1.0.9)
@@ -35,5 +38,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   pg
+  rack-contrib
+  rake
   sinatra!
   thin
