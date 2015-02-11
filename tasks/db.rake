@@ -18,8 +18,6 @@ namespace :db do
                     "details #{json_type},"\
                     'occurred_at timestamp'
     
-    byebug
-
     begin
       db.exec "CREATE TABLE IF NOT EXISTS events( #{events_schema} )"
     rescue PG::Error => err
