@@ -23,22 +23,23 @@ class Application < Sinatra::Base
   end
 
   post "/segment" do
-    begin
-      @db.exec("INSERT INTO events (                  \
-                              event_name,             \
-                              occurred_at,            \
-                              user_id,                \
-                              details                 \
-                ) VALUES (                            \
-                    '#{params[:event]}',              \
-                    '#{params[:timestamp]}',          \
-                    '#{params[:userId]}',             \
-                    '#{params[:properties].to_json}'  \
-                )")
-    rescue PG::Error => err
-      logger.error "Problem inserting an event (#{params[:event]}) at #{params[:timestamp]}"
-      logger.error err.message
-      logger.error err.inspect
+    if params[:type] == 'track' then
+      begin
+        @db.exec("INSERT INTO events (                  \
+                                event_name,             \
+                                occurred_at,            \
+                                user_id,                \
+                                details                 \
+                  ) VALUES (                            \
+                      '#{params[:event]}',              \
+                      '#{params[:timestamp]}',          \
+                      '#{params[:userId]}',             \
+                      '#{params[:properties].to_json}'  \
+                  )")
+      rescue PG::Error => err
+        logger.error "Problem inserting an event (#{params[:event]}) at #{params[:timestamp]}"
+        logger.error err.message
+      end
     end
   end
 
