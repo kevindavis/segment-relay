@@ -20,7 +20,7 @@ class Application < Sinatra::Base
   end
 
   post "/segment" do
-    logger.info params.inspect
+    logger.info request.body
     begin
       @db.exec("INSERT INTO events (          \
                               event_name,     \
