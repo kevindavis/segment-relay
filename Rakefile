@@ -1,3 +1,3 @@
 require './application.rb'
 
-Dir.glob('tasks/*.rake').each { |r| load r}
+Dir.glob('tasks/*.rake').each { |r| load r }

@@ -1,13 +1,13 @@
-require "rubygems"
-require "bundler"
-require "pg"
-require "rack"
-require "rack/contrib"
-require "json"
-Bundler.require :default, (ENV["RACK_ENV"] || "development").to_sym
+require 'rubygems'
+require 'bundler'
+require 'pg'
+require 'rack'
+require 'rack/contrib'
+require 'json'
+Bundler.require :default, (ENV['RACK_ENV'] || 'development').to_sym
 
+# Basic Sinatra app that takes posts to /segment and inserts them in a PG DB
 class Application < Sinatra::Base
-
   configure :production, :development do
     enable :logging
   end
@@ -22,8 +22,8 @@ class Application < Sinatra::Base
     @db = PG.connect(connection_hash)
   end
 
-  post "/segment" do
-    if params[:type] == 'track' then
+  post '/segment' do
+    if params[:type] == 'track'
       begin
         @db.exec("INSERT INTO events (                  \
                                 event_name,             \
@@ -37,10 +37,9 @@ class Application < Sinatra::Base
                       '#{params[:properties].to_json}'  \
                   )")
       rescue PG::Error => err
-        logger.error "Problem inserting an event (#{params[:event]}) at #{params[:timestamp]}"
+        logger.error "Problem with (#{params[:event]}) @#{params[:timestamp]}"
         logger.error err.message
       end
     end
   end
-
 end
