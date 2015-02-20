@@ -10,6 +10,7 @@ Bundler.require :default, (ENV['RACK_ENV'] || 'development').to_sym
 class Application < Sinatra::Base
   configure :production, :development do
     enable :logging
+    set :server, :puma
   end
 
   def initialize
