@@ -10,7 +10,6 @@ Bundler.require :default, (ENV['RACK_ENV'] || 'development').to_sym
 class Application < Sinatra::Base
   configure :production, :development do
     enable :logging
-    set :server, :puma
   end
 
   def initialize
@@ -20,7 +19,14 @@ class Application < Sinatra::Base
       user: ENV['ANALYSIS_DB_USER'],
       password: ENV['ANALYSIS_DB_PW']
     }
-    @db = PG.connect(connection_hash)
+    begin
+      @db = PG.connect(connection_hash)
+    rescue
+      puts 'Problem connecting to Postgres. Exiting.'
+      exit
+    end
+
+    super
   end
 
   post '/segment' do
