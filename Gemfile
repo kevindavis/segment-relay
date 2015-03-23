@@ -7,12 +7,11 @@ gem 'thin'
 gem 'rack-contrib'
 gem 'rake'
 
-group :development do
+group :development, :test do
   gem 'byebug'
 end
 
 group :test do
   gem 'rspec'
-  gem 'byebug'
   gem 'rack-test'
 end
