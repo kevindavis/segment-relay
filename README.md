@@ -8,19 +8,10 @@ Segment-relay is a micro-service that relays events from [Segment.io](http://seg
     [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 2. Set up a Postgres DB
     
-    A database should be created for you if you use the deploy button above. 
+    A database should be created and set up for you if you use the deploy button above. 
 
-    Run ``rake db:create`` to create the events table (see schema below)
-3. Set the following environment variables
+    If not, create a Postgres database, set a DATABASE_URL environment variable to a valid connection string and run ``rake db:create`` to create the events table (see schema below)
 
-    ANALYSIS_DB_HOST : the hostname of your analysis database
-    
-    ANALYSIS_DB_DBNAME : the name of your analysis database
-    
-    ANALYSIS_DB_USER : a username for your analysis database (needs write access)
-    
-    ANALYSIS_DB_PW : the password for your analysis database
-  
 4. Start relaying your events from Segment
   
     ![activate webhook](http://i.imgur.com/ZJ9y4x8.png)
