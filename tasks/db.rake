@@ -1,10 +1,10 @@
-connection_hash = {
-  host: ENV['ANALYSIS_DB_HOST'],
-  dbname: ENV['ANALYSIS_DB_DBNAME'],
-  user: ENV['ANALYSIS_DB_USER'],
-  password: ENV['ANALYSIS_DB_PW']
-}
-db = PG.connect(connection_hash)
+# connection_hash = {
+#   host: ENV['ANALYSIS_DB_HOST'],
+#   dbname: ENV['ANALYSIS_DB_DBNAME'],
+#   user: ENV['ANALYSIS_DB_USER'],
+#   password: ENV['ANALYSIS_DB_PW']
+# }
+db = PG.connect(ENV['DATABASE_URL'])
 
 namespace :db do
   desc 'create events table in the database'
