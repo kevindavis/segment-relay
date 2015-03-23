@@ -7,6 +7,6 @@
     "postdeploy": "bundle exec rake db:create"
   },
   "addons": [
-  	"heroku-postgresql --version=9.4"
+  	"heroku-postgresql"
   ]
 }
