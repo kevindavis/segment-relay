@@ -1,0 +1,12 @@
+{
+  "name": "Segment Relay",
+  "description": "Segment-relay is a micro-service that relays events from Segment.io into a database where you can do free-form analysis.",
+  "repository": "https://github.com/kevindavis/segment-relay",
+  "keywords": ["ruby", "analytics", "postgres", "segment.io"],
+  "scripts": {
+    "postdeploy": "bundle exec rake db:create"
+  },
+  "addons": [
+  	"heroku-postgresql --version=9.4"
+  ]
+}
