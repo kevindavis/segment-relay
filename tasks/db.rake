@@ -1,9 +1,3 @@
-# connection_hash = {
-#   host: ENV['ANALYSIS_DB_HOST'],
-#   dbname: ENV['ANALYSIS_DB_DBNAME'],
-#   user: ENV['ANALYSIS_DB_USER'],
-#   password: ENV['ANALYSIS_DB_PW']
-# }
 uri = URI.parse(ENV['DATABASE_URL'])
 db = PG.connect(uri.hostname, uri.port, nil, nil, uri.path[1..-1], uri.user, uri.password)
 
