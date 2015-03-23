@@ -4,7 +4,8 @@
 #   user: ENV['ANALYSIS_DB_USER'],
 #   password: ENV['ANALYSIS_DB_PW']
 # }
-db = PG.connect(ENV['DATABASE_URL'])
+uri = URI.parse(ENV['DATABASE_URL'])
+db = PG.connect(uri.hostname, uri.port, nil, nil, uri.path[1..-1], uri.user, uri.password)
 
 namespace :db do
   desc 'create events table in the database'
