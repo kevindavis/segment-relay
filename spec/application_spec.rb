@@ -13,7 +13,7 @@ describe 'Segment Relay' do
       },
       timestamp: '2012-12-02T00:30:08.276Z'
     }
-    post '/segment', params.to_json
+    post '/', params.to_json
 
     expect(last_response).to be_ok
   end
