@@ -25,7 +25,7 @@ class Application < Sinatra::Base
     super
   end
 
-  post '/segment' do
+  post '/' do
     if params[:type] == 'track'
       begin
         @db.exec("INSERT INTO events (                  \
