@@ -6,6 +6,8 @@ Segment-relay is a micro-service that relays events from [Segment.io](http://seg
 1. Deploy this code somewhere 
     
     [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
+    Remember the URL you deployed it to, you'll need it in step 4. If you used the deploy button above it should look something like [yourappname].herokuapp.com.
 2. Set up a Postgres DB
     
     A database should be created and set up for you if you use the deploy button above. 
